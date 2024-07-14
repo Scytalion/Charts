@@ -11,7 +11,7 @@
 
 import Foundation
 
-#if os(iOS) || os(tvOS)
+#if canImport(UIKit)
 import UIKit
 
 internal func accessibilityPostLayoutChangedNotification(withElement element: Any? = nil)
@@ -62,7 +62,12 @@ open class NSUIAccessibilityElement: UIAccessibilityElement
         set
         {
             guard let containerView = containerView else { return }
+            
+            #if os(visionOS)
+            super.accessibilityFrame = containerView.frame
+            #else
             super.accessibilityFrame = containerView.convert(newValue, to: UIScreen.main.coordinateSpace)
+            #endif
         }
     }
 }
