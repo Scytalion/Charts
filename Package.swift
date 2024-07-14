@@ -5,7 +5,7 @@ import PackageDescription
 let package = Package(
     name: "DGCharts",
     platforms: [
-          .iOS(.v12),
+          .iOS(.v13),
           .tvOS(.v12),
           .macOS(.v10_13),
           .visionOS(.v1)
